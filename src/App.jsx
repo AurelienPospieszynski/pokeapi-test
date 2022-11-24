@@ -8,15 +8,20 @@ export const App = () => {
 
   if (error) return "An error has occurred: " + error.message;
   console.log(allPokemon);
-  /*
-   */
+
   return (
-    <div className="m-auto flex h-[100vh] flex-col justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="m-auto flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3">
       <p className=" text-center text-3xl "> Pokedex</p>
-      <div className="flex flex-col items-center gap-3">
-        <ul>
+      <div className="flex flex-col items-center justify-center gap-3">
+        <ul className="grid grid-cols-5">
           {allPokemon.map((pokemon, index) => (
-            <Pokemon key={index} id={pokemon.id} name={pokemon.name} />
+            <Pokemon
+              key={index}
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.sprites.other.dream_world.front_default}
+              type={pokemon.types[0].type.name}
+            />
           ))}
         </ul>
 
