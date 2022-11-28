@@ -1,6 +1,6 @@
 # Pokeapi test app
 
-A little react app to test pokeapi
+A little react app to test pokeapi - In working 
 
 ## Systems
 
