@@ -6,14 +6,14 @@ const pokemonRepo = new RemotePokemonRepository();
 
 export function usePokemonData() {
   const [allPokemon, setAllPokemon] = useState([]);
-  const [loadMore, setLoadMore] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=20"
-  );
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () => pokemonRepo.getPokemonSymbol(),
-  });
+  const { isLoading, error, data } = useQuery(
+    {
+      queryKey: ["repoData"],
+      queryFn: () => pokemonRepo.getPokemonSymbol(),
+    },
+    { queryKey: ["repo2Data"], queryFn: () => pokemonRepo.getNext20Pokemon() }
+  );
 
   useEffect(() => {
     if (data) setAllPokemon((current) => [...current, ...data]);
